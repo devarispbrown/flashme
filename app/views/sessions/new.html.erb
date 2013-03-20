@@ -1,0 +1,10 @@
+<div class="center">
+  <h2>Please Sign In</h2>
+  <%= form_for(:session, url: session_path) do |form| %>
+    <div>
+      <%= form.text_field :username, placeholder: "Username" %>
+    </div>
+      <%= form.submit "Sign in" %>
+  <% end %>
+  
+</div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flashme</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <% if signed_in? %>
+          <%= link_to "Flashme", decks_path, id: "logo" %>
+        <% else %>
+          <%= link_to "Flashme", root_path, id: "logo" %>
+        <% end %>
+        <nav>
+          <ul class="nav pull-right">
+            <% if signed_in? %>
+              <li id="welcome">Welcome <%= current_user.username %></li>
+              <li><%= link_to "Sign Out", session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign In", new_session_path %></li>
+              <li><%= link_to "Sign Up", new_user_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <div class="container">
+    <%= yield %>
+  </div>
+  
+
+
+</body>
+</html>
